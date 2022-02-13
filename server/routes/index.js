@@ -4,11 +4,6 @@ const axios = require("axios");
 
 const sdk = require("api")("@opensea/v1.0#1j3wv35kyd6wqwc");
 
-/* GET home page. */
-router.get("/", function (req, res, next) {
-	res.render("index", { title: "Express", wallet: "0x23235D96903585B18c79A975646D019688fE5b2F", balance: balance });
-});
-
 router.get("/account/:account", (req, res, next) => {
 	const account = req.params.account;
 	// console.log(`clinet request account : ${account}`);
