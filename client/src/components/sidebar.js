@@ -1,0 +1,91 @@
+import React from 'react'
+import {
+  ProSidebar,
+  Menu,
+  MenuItem,
+  SubMenu,
+  SidebarHeader,
+  SidebarFooter,
+  SidebarContent,
+} from 'react-pro-sidebar';
+import { FaTachometerAlt, FaGem, FaGithub, FaRegLaughWink} from 'react-icons/fa';
+import bg from '../bg/bg1.jpg'
+import { Link } from 'react-router-dom';
+
+// 사이드 바 구현
+const Sidebar = ({sideSize }) => {
+    return (
+        <ProSidebar
+        image={bg}
+        collapsed={sideSize}
+        toggled={false}
+        >
+            <SidebarHeader>
+                <div
+                  style={{
+                    padding: '24px',
+                    textTransform: 'uppercase',
+                    fontWeight: 'bold',
+                    fontSize: 14,
+                    letterSpacing: '1px',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    whiteSpace: 'nowrap',
+                  }}
+                > 
+                    <a href="javascript:alert('지갑 연결 준비중 (기달려주세요)');" onfocus="this.blur()">
+                        Sign in
+                    </a>
+
+                </div>
+            </SidebarHeader>
+            <SidebarContent>
+                <Menu iconShape="circle">
+                    <MenuItem
+                    icon={<FaTachometerAlt/>}
+                    suffix={<span className="badge red">new</span>}
+                    >
+                        Home
+                    </MenuItem>
+                    <MenuItem icon={<FaGem />}>
+                        <Link to="/profile"> MyWallet </Link>
+                    </MenuItem>
+                </Menu>
+                <Menu iconShape="circle">
+                    <SubMenu
+                    suffix={<span className="badge yellow"> 2 </span>}
+                    title="Deal"
+                    icon={<FaRegLaughWink/>}
+                    >
+                        <MenuItem> Send </MenuItem>
+                        <MenuItem> MyCollection </MenuItem>
+                    </SubMenu>
+                </Menu>
+
+
+            </SidebarContent>
+            <SidebarFooter style={{ textAlign: 'center' }}>
+                    <div
+                      className="sidebar-btn-wrapper"
+                      style={{
+                        padding: '20px 24px',
+                      }}
+                    >
+                    <a
+                        href="https://github.com/codestates/beb-02-hypebear"
+                        target="_blank"
+                        className="sidebar-btn"
+                        rel="noopener noreferrer"
+                    >
+                        <FaGithub />
+                        <span style={{ whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden' }}>
+                            <p id="viewSource"> view sources</p>
+                        </span>
+                      </a>
+                    </div>
+              </SidebarFooter>
+        </ProSidebar>
+    );
+}
+
+export default Sidebar;
