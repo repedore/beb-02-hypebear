@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 const axios = require("axios");
+const { response } = require("express");
 
 const sdk = require("api")("@opensea/v1.0#1j3wv35kyd6wqwc");
 
@@ -28,7 +29,13 @@ router.get("/account/:account", (req, res, next) => {
 				.then(
 					axios.spread((...responses) => {
 						for (let i = 0; i < responses.length; i++) {
-							metadata.push(responses[i].data);
+							let data = responses[i].data;
+							let profileDataSet = {};
+							profileDataSet["description"] = data.description;
+							profileDataSet["external_url"] = data.external_url;
+							profileDataSet["image"] = data.image;
+							profileDataSet["name"] = data.name;
+							metadata.push(profileDataSet);
 						}
 						res.json({ metadata });
 					})
