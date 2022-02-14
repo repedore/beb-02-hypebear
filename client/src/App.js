@@ -8,33 +8,41 @@ import Footer from './components/footer'
 import Sidebar from './components/sidebar'
 
 
-
 // App Router 연동
 const App = () => {
     const [sideSize, setSideSize] = useState(false);
-
+    const [wallet, setWallet] = useState('')
+    const [account, setAccount] = useState('');
     const handleResizeSide = (checked) => {
         setSideSize(checked)
         console.log(sideSize);
     }
+
+
+    // 지갑 연결
+    const connectWallet = async () => {
+        var accounts = await window.ethereum.request({
+            method: "eth_requestAccounts",
+        });
+        setAccount(accounts[0]);
+    };
+
     
     return (
-    <div className="main app"> 
-        <Sidebar sideSize={sideSize}/>
-        <div className="screen">
-            <Header handleResizeSide={handleResizeSide} sideSize={sideSize}/>
-                <Routes>
-                    <Route path="/" element={<Home
-
-                    sideSize={sideSize}
-                    setSideSize={setSideSize}
-
-                            />} />
-                  <Route path="/profile" element={<Profile />} />
-            </Routes>
-            <Footer className="footer"/>
+        <div className="main app"> 
+            <Sidebar sideSize={sideSize} connectWallet={connectWallet} account={account}/>
+            <div className="screen">
+                <Header className="head" handleResizeSide={handleResizeSide} sideSize={sideSize}/>
+                    <Routes>
+                        <Route path="/" element={<Home
+                            sideSize={sideSize}
+                            setSideSize={setSideSize}
+                        />} />
+                    <Route path="/profile" element={<Profile account={account}/>} />
+                </Routes>
+                <Footer className="footer"/>
+            </div>
         </div>
-    </div>
     );
 };
 

@@ -8,19 +8,20 @@ import {
   SidebarFooter,
   SidebarContent,
 } from 'react-pro-sidebar';
-import { FaTachometerAlt, FaGem, FaGithub, FaRegLaughWink} from 'react-icons/fa';
+import { FaWallet, FaTachometerAlt, FaGem, FaGithub, FaRegLaughWink} from 'react-icons/fa';
 import bg from '../bg/bg1.jpg'
 import { Link } from 'react-router-dom';
 
 // 사이드 바 구현
-const Sidebar = ({sideSize }) => {
+const Sidebar = ({sideSize, connectWallet, account }) => {
     return (
         <ProSidebar
         image={bg}
         collapsed={sideSize}
         toggled={false}
         >
-            <SidebarHeader>
+            <SidebarHeader
+        >
                 <div
                   style={{
                     padding: '24px',
@@ -32,9 +33,9 @@ const Sidebar = ({sideSize }) => {
                     textOverflow: 'ellipsis',
                     whiteSpace: 'nowrap',
                   }}
-                > 
-                    <a href="javascript:alert('지갑 연결 준비중 (기달려주세요)');" onfocus="this.blur()">
-                        Sign in
+                >  <FaWallet/> 
+                    <a onClick={connectWallet} onfocus="this.blur()">
+                       {account ?  account  : "Sign in" }
                     </a>
 
                 </div>
@@ -45,7 +46,7 @@ const Sidebar = ({sideSize }) => {
                     icon={<FaTachometerAlt/>}
                     suffix={<span className="badge red">new</span>}
                     >
-                        Home
+                        <Link to="/"> Home </Link>
                     </MenuItem>
                     <MenuItem icon={<FaGem />}>
                         <Link to="/profile"> MyWallet </Link>
@@ -58,7 +59,7 @@ const Sidebar = ({sideSize }) => {
                     icon={<FaRegLaughWink/>}
                     >
                         <MenuItem> Send </MenuItem>
-                        <MenuItem> MyCollection </MenuItem>
+                        <MenuItem> Create </MenuItem>
                     </SubMenu>
                 </Menu>
 
