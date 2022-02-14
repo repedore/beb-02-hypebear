@@ -8,10 +8,9 @@ import TokenList from './components/TokenList'
 
 // App 함수 부분,
 //공급자 객체 연결은 처음 한번만 하면 되기 때문에 useEffect()를 사용해 컴포넌트가 처음 마운트 되었을 때 web3 객체를 연결하도록 한다
-function App() {
+function ConnectWallet({account}) {
     // useState 부분
     const [web3, setWeb3] = useState();
-    const [account, setAccount] = useState('');
 	const [newErc721addr, setNewErc721Addr] = useState();
 	const [erc721list, setErc721list] = useState([]);  // 자신의 NFT 정보를 저장할 토큰
 
@@ -64,14 +63,6 @@ function App() {
         }
     }, []);
 
-    // 지갑 연결
-    const connectWallet = async () => {
-        var accounts = await window.ethereum.request({
-            method: "eth_requestAccounts",
-        });
-        setAccount(accounts[0]);
-    };
-
     return (
         <div className="App">
             {/* 버튼이 눌릴 때, connectWallet function 실핼*/}
@@ -99,4 +90,4 @@ function App() {
         </div>
     );
 }
-export default App;
+export default ConnectWallet;

@@ -1,12 +1,19 @@
 import React from 'react';
 import Switch from 'react-switch';
-import { FaHeart, FaBars } from 'react-icons/fa';
+import { FaHeart, FaBars, FaSearch } from 'react-icons/fa';
 
 const Header = ({
     handleResizeSide,
     sideSize
 }) => {
     return (
+        <div className="topNav">
+            <div>
+                <form className="header-form">
+                    <FaSearch />
+                    <input type="text" placeholder="Search" name="search"/>
+                </form>
+            </div>
             <div className="block">
                 <Switch
                   height={16}
@@ -20,7 +27,7 @@ const Header = ({
                 />
                 <span>resize</span>
             </div>
-
+        </div>
     );
 }
 
