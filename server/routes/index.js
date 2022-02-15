@@ -21,7 +21,9 @@ router.get("/account/:account", (req, res, next) => {
 			assets = data.assets;
 			for (let i = 0; i < assets.length; i++) {
 				let metadata_url = assets[i].token_metadata;
-				reqs[i] = axios.get(metadata_url);
+				if (metadata_url !== null && metadata_url !== '') {
+					reqs[i] = axios.get(metadata_url);	
+				}
 			}
 
 			axios
@@ -31,7 +33,7 @@ router.get("/account/:account", (req, res, next) => {
 						for (let i = 0; i < responses.length; i++) {
 							let data = responses[i].data;
 							let profileDataSet = {};
-							profileDataSet["description"] = data.description;
+							profileDataSet["description"] = data.description || data.Description;
 							profileDataSet["external_url"] = data.external_url;
 							profileDataSet["image"] = data.image;
 							profileDataSet["name"] = data.name;
