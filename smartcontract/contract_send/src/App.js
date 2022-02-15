@@ -48,7 +48,7 @@ function App() {
 
 		setErc721list([]);
 
-		for (let tokenId of arr) {
+		for (let tokenId of arr) { 
 			let tokenOwner = await tokenContract.methods.ownerOf(tokenId).call();
 
 			// if account가 tokenOwner와 맞다면
