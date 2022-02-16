@@ -18,8 +18,10 @@ const Send = ({account, web3, connectWallet}) => {
         const symbol = await tokenContract.methods.symbol().call();
         const totalSupply = await tokenContract.methods.totalSupply().call();
         
-        let arr = [];
 
+
+        let arr = [];
+        setErc721list([]);
         for (let i = 1; i <= totalSupply; i++) {
             arr.push(i)
         }
@@ -33,8 +35,14 @@ const Send = ({account, web3, connectWallet}) => {
                 let tokenURI = await tokenContract.methods
                     .tokenURI(tokenId)
                     .call();
+                
+				let metadata = await fetch(tokenURI);
+				if (!metadata.ok) throw new Error(metadata.statusText);
+				const json = await metadata.json();
+                let image = json["image"];
+                
                 setErc721list((preState) => {
-                    return [...preState, {name, symbol, tokenId, tokenURI}]
+                    return [...preState, { name, symbol, tokenId, image}];
                 });
             }  
         }

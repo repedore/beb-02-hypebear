@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import SendIcon from '@mui/icons-material/Send';
 import Button from '@mui/material/Button';
 import web3 from 'web3'
-import erc721Abi from '../erc721Abi.js'
+import erc721Abi from "../HB721Abi.js";
 
 // ERC 721 부분
 // erc 721 리스트를 받아와서, name, symbol, tokenid를 돌려준다.
@@ -35,9 +35,9 @@ function SendErc721({ erc721list, account, smartContractAddr, web3 }) {
             {erc721list.map((token) => {
                 return (
             
-                    <div className="send-erc721token">
+                    <div className="send-erc721token" key={token.tokenId}>
                         <div>
-                            <img src={token.tokenURI} width={150} alt="none" />
+                            <img src={token.image} width={150} alt="none" />
                         </div>
                         <div className="send-erc721token-exp">
                             <div className="name">Name: {token.name}</div>

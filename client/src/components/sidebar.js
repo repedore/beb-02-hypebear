@@ -34,7 +34,10 @@ const Sidebar = ({sideSize, connectWallet, account }) => {
                     whiteSpace: 'nowrap',
                   }}
                 >  <FaWallet/> 
-                    <a onClick={connectWallet} onfocus="this.blur()">
+                    <a onClick={connectWallet} onFocus={() => {
+                        this.blur()
+                    }
+                    }>
                        {account ?  account  : "Sign in" }
                     </a>
 

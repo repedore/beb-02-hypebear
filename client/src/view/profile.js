@@ -1,6 +1,6 @@
 import React from "react"
 import { useState, useEffect } from "react"; //우선 여기까지
-import erc721Abi from '../erc721Abi'
+import erc721Abi from "../HB721Abi";
 import TokenList from '../components/TokenList'
 
 

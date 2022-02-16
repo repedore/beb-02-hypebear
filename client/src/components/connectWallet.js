@@ -2,7 +2,7 @@ import './App.css'; //css 부터 불러와주고~
 import Web3 from 'web3'; //web3 끌고오고
 import React from "react" //react 불러오고~
 import { useState, useEffect } from "react"; //우선 여기까지
-import erc721Abi from './erc721Abi'
+import erc721Abi from "./HB721Abi";
 import TokenList from './components/TokenList'
 
 
