@@ -3,6 +3,8 @@ import { Route, Routes } from 'react-router-dom';
 import Home from './view/Home';
 import Profile from './view/profile'
 import Send from './view/Send'
+import Create from './view/Create'
+
 import './styles/App.scss';
 import Header from './components/header'
 import Footer from './components/footer'
@@ -13,7 +15,6 @@ import Web3 from 'web3'
 // App Router 연동
 const App = () => {
     const [sideSize, setSideSize] = useState(false);
-    const [wallet, setWallet] = useState('')
     const [account, setAccount] = useState('');
     const [web3, setWeb3] = useState();
 
@@ -36,14 +37,13 @@ const App = () => {
         }
     }, []);
 
-
-
     // 지갑 연결
     const connectWallet = async () => {
         var accounts = await window.ethereum.request({
             method: "eth_requestAccounts",
         });
         setAccount(accounts[0]);
+        console.log(accounts)
     };
     
     return (
@@ -58,6 +58,7 @@ const App = () => {
                         />} />
                     <Route path="/profile" element={<Profile account={account} web3={web3}/>} />
                     <Route path="/send" onClick={connectWallet} element={<Send account={account} web3={web3} connectWallet={connectWallet}/>} />
+                    <Route path="/create" element={<Create account={account} web3={web3} />} />
                 </Routes>
                 <Footer className="footer"/>
             </div>

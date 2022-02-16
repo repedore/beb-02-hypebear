@@ -61,7 +61,9 @@ const Sidebar = ({sideSize, connectWallet, account }) => {
                         <MenuItem> 
                             <Link to="/send"> Send </Link>
                         </MenuItem>
-                        <MenuItem> Create </MenuItem>
+                        <MenuItem>
+                            <Link to="/create"> Create </Link>
+                        </MenuItem>
                     </SubMenu>
                 </Menu>
 

@@ -25,6 +25,10 @@ a:link, a:visited, a:hover, a:hover {
   color: inherit; /* 링크의 색상 제거 */
 }
 
+.dropContainer {
+    border: 1px solid #E1E5EB;
+}
+
 .main {
     display: flex;
     height: 100%;
@@ -42,7 +46,36 @@ a:link, a:visited, a:hover, a:hover {
     background-color: #F6F8FA;
     flex-grow: 1;
 }
+/**
+ *
+ * Create 페이지와 관련된 부분
+ *
+ **/
+.Create {
+    background-color: #F6F8FA;
+    display: flex;
+    justify-content: center;
+}
 
+.create-box {
+    width: 80%;
+}
+
+.create-inputbox {
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+.create-input-div {
+    margin-top: 30px;
+}
+
+.create-input-div > input:nth-child(1) {
+    width: 200px;
+}
+
+.create-input-div > input:nth-child(2) {
+    width: 400px;
+}
 /**
  *
  * send 페이지와 관련된 부분
