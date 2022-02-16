@@ -10,6 +10,7 @@ import { create } from "ipfs-http-client";
 
 const client = create("https://ipfs.infura.io:5001/api/v0");
 
+
 const contractAddr = "0x29A16Ce1C025d9acE8dDC5845235Ea4F918BE040";
 
 function App() {
@@ -39,9 +40,9 @@ function App() {
 		var accounts = await window.ethereum.request({
 			method: "eth_requestAccounts",
 		});
-
 		setAccount(accounts[0]);
 	};
+    
 
 	async function onChange(e) {
 		const file = e.target.files[0];
@@ -66,11 +67,14 @@ function App() {
 			cid = await client.add(JSON.stringify(metadata));
 			metadata_url = `https://ipfs.infura.io/ipfs/${cid.path}`;
 			tokenContract = await new web3.eth.Contract(HBNFTabi, newErc721addr);
+            
+            
 			result = await tokenContract.methods.mintNFT(account, metadata_url).send({
 				from: account,
 				gasLimit: 285000,
 				value: 0,
 			});
+            
 			console.log(result);
 		} catch (error) {
 			console.log("Error uploading metadata file: ", error);

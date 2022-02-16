@@ -57,4 +57,6 @@ const Send = ({account, web3, connectWallet}) => {
 
 }
 
+// qwerqwer QmZiofSN5XzZuiiZ8kVf2rJSVD4NFbqPCFFokLoSyqVnz2
+
 export default Send
