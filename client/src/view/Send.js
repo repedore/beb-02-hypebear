@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react'
-import erc721Abi from '../erc721Abi' 
+import erc721Abi from '../HB721Abi' 
 import SendTokenList from '../components/SendTokenList'
 
 const Send = ({account, web3, connectWallet}) => {
     console.log(account)
     const [erc721list, setErc721list] = useState([]);
 
-    const smartContractAddr = "0xbf0a2A941c308850A9Aac779B0EFc1C603c193df"
+    const smartContractAddr = "0x29A16Ce1C025d9acE8dDC5845235Ea4F918BE040";
 
     const addNewErc721Token = async () => {
         const tokenContract = await new web3.eth.Contract(

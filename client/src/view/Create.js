@@ -1,5 +1,5 @@
 import {useDropzone} from 'react-dropzone'
-import erc721Abi from "../erc721Abi";
+import erc721Abi from "../HB721Abi";
 // import ipfs from "./utils/ipfs";
 // var ipfs = create("/ip4/127.0.0.1/tcp/5003");
 // var ipfs = new create({ host: "ipfs.infura.io 22", port: 5001, protocol: "https" });
@@ -10,8 +10,8 @@ const client = create("https://ipfs.infura.io:5001/api/v0");
 
 
 // const contractAddr = "0x29A16Ce1C025d9acE8dDC5845235Ea4F918BE040";
-
-const contractAddr = "0xbf0a2A941c308850A9Aac779B0EFc1C603c193df"
+//const contractAddr = "0xbf0a2A941c308850A9Aac779B0EFc1C603c193df"
+const contractAddr = "0x29A16Ce1C025d9acE8dDC5845235Ea4F918BE040";
 
 const baseStyle = {
   flex: 1,
